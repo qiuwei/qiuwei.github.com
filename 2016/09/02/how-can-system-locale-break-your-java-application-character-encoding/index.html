@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>about | Colorless Green Ideas Sleep Furiously</title>
+  <title>How can system locale break your java application character encoding | Colorless Green Ideas Sleep Furiously</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="My name is Wei Qiu.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://wei.qiu.es/about/index.html">
+  <meta name="description" content="Today my colleague encountered some weried character encoding problem of a java application. The application runs with out any problem on a mac, but shows weried characters when runs on ubuntu.
+After">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How can system locale break your java application character encoding">
+<meta property="og:url" content="http://wei.qiu.es/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/index.html">
 <meta property="og:site_name" content="Colorless Green Ideas Sleep Furiously">
-<meta property="og:description" content="My name is Wei Qiu.">
-<meta property="og:updated_time" content="2016-09-01T11:59:05.000Z">
+<meta property="og:description" content="Today my colleague encountered some weried character encoding problem of a java application. The application runs with out any problem on a mac, but shows weried characters when runs on ubuntu.
+After">
+<meta property="og:updated_time" content="2016-09-02T14:00:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="My name is Wei Qiu.">
+<meta name="twitter:title" content="How can system locale break your java application character encoding">
+<meta name="twitter:description" content="Today my colleague encountered some weried character encoding problem of a java application. The application runs with out any problem on a mac, but shows weried characters when runs on ubuntu.
+After">
   
     <link rel="alternate" href="/atom.xml" title="Colorless Green Ideas Sleep Furiously" type="application/atom+xml">
   
@@ -65,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-how-can-system-locale-break-your-java-application-character-encoding" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/about/index.html" class="article-date">
-  <time datetime="2016-01-07T11:08:50.000Z" itemprop="datePublished">2016-01-07</time>
+    <a href="/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/" class="article-date">
+  <time datetime="2016-09-02T13:39:31.000Z" itemprop="datePublished">2016-09-02</time>
 </a>
     
   </div>
@@ -79,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      How can system locale break your java application character encoding
     </h1>
   
 
@@ -87,18 +90,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>My name is Wei Qiu.</p>
+        <p>Today my colleague encountered some weried character encoding problem of a java application. The application runs with out any problem on a mac, but shows weried characters when runs on ubuntu.</p>
+<p>After some investigation, we found out that the locale on the ubuntu machine is set wrongly. But how can the system locale have any influence on how java encodes or deocdes? It turns out that some APIs(e.g., the default constructor of <code>InputStreamReader</code>, <code>String.getBytes()</code>) in java have parameters for setting character encoding. Those parameters default to JVM’s file.encoding property if not explicitly specified. And JVM’s file.encoding property gets default value according to JVM locale. JVM locale reads system locale as the default value when JVM starts up.</p>
+<p>The lesson we learned here is that explicit is better than implicit. Default parameters might be sometimes convenient, but they can also set your hair on fire.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wei.qiu.es/about/index.html" data-id="cisltpmmx0001ppgaxmvj8n6g" class="article-share-link">Share</a>
+      <a data-url="http://wei.qiu.es/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/" data-id="cisltpmn00003ppga9kx3vkzk" class="article-share-link">Share</a>
       
       
     </footer>
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/23/webba/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Some design considerations for Weblicht Batch Processing</div>
+    </a>
+  
+</nav>
+
   
 </article>
 

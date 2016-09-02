@@ -63,6 +63,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-how-can-system-locale-break-your-java-application-character-encoding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/" class="article-date">
+  <time datetime="2016-09-02T13:39:31.000Z" itemprop="datePublished">2016-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/">How can system locale break your java application character encoding</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today my colleague encountered some weried character encoding problem of a java application. The application runs with out any problem on a mac, but shows weried characters when runs on ubuntu.</p>
+<p>After some investigation, we found out that the locale on the ubuntu machine is set wrongly. But how can the system locale have any influence on how java encodes or deocdes? It turns out that some APIs(e.g., the default constructor of <code>InputStreamReader</code>, <code>String.getBytes()</code>) in java have parameters for setting character encoding. Those parameters default to JVM’s file.encoding property if not explicitly specified. And JVM’s file.encoding property gets default value according to JVM locale. JVM locale reads system locale as the default value when JVM starts up.</p>
+<p>The lesson we learned here is that explicit is better than implicit. Default parameters might be sometimes convenient, but they can also set your hair on fire.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://wei.qiu.es/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/" data-id="cisltpmn00003ppga9kx3vkzk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-webba" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/01/23/webba/" class="article-date">
@@ -99,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wei.qiu.es/2016/01/23/webba/" data-id="ciskbs2ar00025pgagddatpgj" class="article-share-link">Share</a>
+      <a data-url="http://wei.qiu.es/2016/01/23/webba/" data-id="cisltpmn10004ppgapx8z88yn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wei.qiu.es/2016/01/04/Mac-like-Umlaut-Composition-Under-Archlinux/" data-id="ciskbs2ah00005pgazjqa4lss" class="article-share-link">Share</a>
+      <a data-url="http://wei.qiu.es/2016/01/04/Mac-like-Umlaut-Composition-Under-Archlinux/" data-id="cisltpmmy0002ppga9409h352" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +209,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li></ul>
     </div>
   </div>
 
@@ -181,6 +220,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/09/02/how-can-system-locale-break-your-java-application-character-encoding/">How can system locale break your java application character encoding</a>
+          </li>
         
           <li>
             <a href="/2016/01/23/webba/">Some design considerations for Weblicht Batch Processing</a>
